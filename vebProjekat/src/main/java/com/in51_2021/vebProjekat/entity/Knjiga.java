@@ -25,7 +25,7 @@ public class Knjiga implements Serializable {
     private Date datumObjavljivanja;
 
     @Column
-    private int brojStrana;
+    private Long  brojStrana;
     @Column
     private String opis;
 
@@ -77,11 +77,11 @@ public class Knjiga implements Serializable {
         this.datumObjavljivanja = datumObjavljivanja;
     }
 
-    public int getBrojStrana() {
+    public Long getBrojStrana() {
         return brojStrana;
     }
 
-    public void setBrojStrana(int brojStrana) {
+    public void setBrojStrana(Long brojStrana) {
         this.brojStrana = brojStrana;
     }
 
