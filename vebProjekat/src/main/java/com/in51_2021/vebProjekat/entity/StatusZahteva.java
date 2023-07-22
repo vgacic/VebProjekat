@@ -7,7 +7,7 @@ public enum StatusZahteva {
 
     private final String text;
 
-    ZahtevAktivacijaAutor(final String text){this.text=text;}
+    StatusZahteva(final String text){this.text=text;} //final - cannot be changed once it is assigned a value
 
 
     public String toString(){return text;}

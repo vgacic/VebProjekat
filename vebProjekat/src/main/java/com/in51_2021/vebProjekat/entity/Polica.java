@@ -19,9 +19,9 @@ public class Polica implements Serializable {
     private TipPolice tip;
     @Column
     private boolean primarna;
-    @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.MERGE)
+    /*@ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.MERGE)
     @JoinColumn(name = "korisnik_id")
-    private Korisnik korisnik;
+    private Korisnik korisnik;*/ //?????????
 
 
 
@@ -33,28 +33,23 @@ public class Polica implements Serializable {
 
 
 
+
     public Polica(String naziv, boolean primarna) {
         this.naziv = naziv;
         this.primarna = primarna;
 
     }
 
-
-   /* public Polica(PolicaDto policaDto) {
-        this.naziv = policaDto.getNaziv();
-        this.tip = TipPolice.NORMAL;
-    }*/
     public Polica() {
         this.tip = TipPolice.REGULAR;
     }
 
     public Polica(String naziv) {
-        //this.stavkaPolice = new StavkaPolice();
+
         this.naziv = naziv;
         this.tip = TipPolice.REGULAR;
     }
     public Polica(String naziv, TipPolice tip) {
-        //this.stavkaPolice = new StavkaPolice();
         this.naziv = naziv;
         this.tip = tip;
     }

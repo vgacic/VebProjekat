@@ -37,4 +37,13 @@ public class Autor extends Korisnik implements Serializable {
         this.aktivan = aktivan;
     }
 
+    @Override
+    public String toString() {
+        return "Autor{" +
+                super.toString() + '\'' +
+                ", aktivan=" + aktivan + '\'' +
+                ", knjige=" + autoroveKnjige + '\'' +
+                '}';
+    }
+
 }
