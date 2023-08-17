@@ -21,7 +21,7 @@ public class Recenzija {
     @Column(name="datumRecenzije")
     private Date datumRecenzije;
 
-    @OneToOne
+    @ManyToOne(fetch=FetchType.LAZY,cascade = CascadeType.MERGE)
     @JoinColumn(name = "korisnik_id")
     private Korisnik korisnik;
 

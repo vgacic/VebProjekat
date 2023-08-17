@@ -25,18 +25,34 @@ public class Knjiga implements Serializable {
     private Date datumObjavljivanja;
 
     @Column
-    private Long  brojStrana;
+    private int  brojStrana;
     @Column
     private String opis;
 
     @OneToOne  //knjiga ima jedan zanr
-    @JoinColumn(name = "zanr_id")
+   // @JoinColumn(name = "zanr_id")
     private Zanr zanr;
 
     @Column
     private double ocena;
 
+    @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.MERGE)
+    private Autor autor;
 
+    public Knjiga(){}
+
+
+    public Knjiga(String naslov,String naslovnaFotografija,String ISBN,Date datumObjavljivanja,int brojStrana,double ocena,Zanr zanr)
+    {
+        this.naslov = naslov;
+        this.naslovnaFotografija = naslovnaFotografija;
+        this.ISBN = ISBN;
+        this.datumObjavljivanja = datumObjavljivanja;
+        this.brojStrana = brojStrana;
+        this.opis = opis;
+        this.ocena = ocena;
+        this.zanr = zanr;
+    }
     public Long getId() {
         return id;
     }

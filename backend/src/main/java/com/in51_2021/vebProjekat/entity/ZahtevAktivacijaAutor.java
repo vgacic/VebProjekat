@@ -25,11 +25,12 @@ public class ZahtevAktivacijaAutor implements Serializable {
     @Column(name = "datum")
     private Date datum;
 
-    @ManyToOne(fetch = FetchType.EAGER,cascade = {})
+    @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.MERGE)
     @JoinColumn(name = "autor_id",referencedColumnName = "id")
     private Autor autor;
 
     @Column(name = "status")
+    @Enumerated(EnumType.STRING)
     private StatusZahteva status;
 
 

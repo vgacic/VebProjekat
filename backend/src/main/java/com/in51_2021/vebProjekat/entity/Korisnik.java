@@ -9,19 +9,12 @@ import java.util.Set;
 
 @Entity
 @Table(name = "korisnik")
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name = "uloga_korisnika", discriminatorType = DiscriminatorType.STRING)
-@DiscriminatorValue("Citalac")
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class Korisnik implements Serializable {
-
-    @Column(name = "uloga_korisnika",insertable=false, updatable=false)
-    private String ulogaKorisnika;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-
     @Column
     protected String ime;
     @Column
@@ -44,15 +37,50 @@ public class Korisnik implements Serializable {
     @Column
     protected String opis;
 
+    @Column
+    @Enumerated(EnumType.STRING)
+    private UlogaKorisnika uloga;
+
     @OneToMany(fetch=FetchType.EAGER,cascade = CascadeType.ALL)  //korisnik ima vise polica(regular,want to read,currently reading,read)
     private Set<Polica> police=new HashSet<>();
 
-    public String getUlogaKorisnika() {
-        return ulogaKorisnika;
+
+    public void napraviPrimarnePolice(){
+        police.add(new Polica("WantToRead",TipPolice.WANT_TO_READ));
+        police.add(new Polica("CurrentlyReading",TipPolice.CURRENTLY_READING));
+        police.add(new Polica("Read",TipPolice.READ);
+    }
+    public Korisnik(String email, String ime) { //konstruktor koji postavlja ulogu novog korisnika na citaoca i pravi njegove primarne police
+        this.email=email;
+        this.ime=ime;
+        this.uloga=UlogaKorisnika.CITALAC;
+        napraviPrimarnePolice();
+
     }
 
-    public void setUlogaKorisnika(UlogaKorisnika ulogaKorisnika) {
-        this.ulogaKorisnika = ulogaKorisnika.toString();
+
+    public Korisnik(String ime, String prezime, String korisnickoIme, String email, String lozinka, Date datumRodjenja, String profilnaSlika, String opis, UlogaKorisnika uloga)
+    {
+        this.ime=ime;
+        this.prezime = prezime;
+        this.korisnickoIme = korisnickoIme;
+        this.email = email;
+        this.lozinka = lozinka;
+        this.datumRodjenja = datumRodjenja;
+        this.profilnaSlika = profilnaSlika;
+        this.opis = opis;
+        this.uloga = uloga;
+        this.police=new HashSet<>();
+
+    }
+    public Korisnik(){};
+
+    public UlogaKorisnika getUloga() {
+        return uloga;
+    }
+
+    public void setUloga(UlogaKorisnika uloga) {
+        this.uloga = uloga;
     }
 
     public Long getId() {

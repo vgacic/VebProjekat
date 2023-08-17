@@ -16,16 +16,20 @@ public class StavkaPolice {
     private Long id;
 
 
-    @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
-    @JoinColumn(name="stavka_police_knjiga",referencedColumnName = "id")
+    @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.MERGE)
+    @JoinColumn(name = "knjiga_id")
     private Knjiga knjiga;
 
-    @OneToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
-    @JoinColumn(name = "stavka_police_id",referencedColumnName = "id")
-    private Set<Recenzija> recenzija=new HashSet<>();
+    @OneToOne(fetch = FetchType.LAZY,cascade = CascadeType.MERGE)
+    private Recenzija recenzija;
 
 
     public StavkaPolice() {}
+
+    public StavkaPolice(Knjiga knjiga,Recenzija recenzija){
+        this.knjiga=knjiga;
+        this.recenzija=recenzija;
+    }
 
     public Long getId() {
         return id;
@@ -42,11 +46,11 @@ public class StavkaPolice {
         this.knjiga = knjiga;
     }
 
-    public Set<Recenzija> getRecenzija() {
+    public Recenzija getRecenzija() {
         return recenzija;
     }
 
-    public void setRecenzija(Set<Recenzija> recenzija) {
+    public void setRecenzija(Recenzija recenzija) {
         this.recenzija = recenzija;
     }
 

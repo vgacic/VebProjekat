@@ -19,20 +19,15 @@ public class Polica implements Serializable {
     private TipPolice tip;
     @Column
     private boolean primarna;
-    /*@ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.MERGE)
+
+    @ManyToMany(fetch=FetchType.EAGER,cascade = CascadeType.PERSIST)
+    @JoinTable(joinColumns = @JoinColumn(name="polica_id",referencedColumnName = "id"),inverseJoinColumns = @JoinColumn(name="stavkaPolice_id",referencedColumnName = "id"))
+    private Set<StavkaPolice> stavkePolice=new HashSet<>();
+
+
+    @ManyToOne(fetch=FetchType.LAZY,cascade = CascadeType.MERGE)
     @JoinColumn(name = "korisnik_id")
-    private Korisnik korisnik;*/ //?????????
-
-
-
-
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "polica_id")
-    private Set<StavkaPolice> stavkaPolice = new HashSet<>();
-
-
-
-
+    private Korisnik korisnik;
 
     public Polica(String naziv, boolean primarna) {
         this.naziv = naziv;
