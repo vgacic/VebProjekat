@@ -6,6 +6,7 @@ import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
+@Entity
 public class Polica implements Serializable {
 
     @Id
@@ -15,9 +16,7 @@ public class Polica implements Serializable {
     @Column(name = "naziv")
     private String naziv;
 
-    @Column(name = "tip")
-    private TipPolice tip;
-    @Column
+    @Column(name = "primarna")
     private boolean primarna;
 
     @ManyToMany(fetch=FetchType.EAGER,cascade = CascadeType.PERSIST)
@@ -34,36 +33,12 @@ public class Polica implements Serializable {
         this.primarna = primarna;
 
     }
-
-    public Polica() {
-        this.tip = TipPolice.REGULAR;
-    }
-
-    public Polica(String naziv) {
-
-        this.naziv = naziv;
-        this.tip = TipPolice.REGULAR;
-    }
-    public Polica(String naziv, TipPolice tip) {
-        this.naziv = naziv;
-        this.tip = tip;
-    }
-
-
     public Long getId() {
         return id;
     }
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Set<StavkaPolice> getStavkaPolice() {
-        return stavkaPolice;
-    }
-
-    public void setStavkaPolice(Set<StavkaPolice> stavkaPolice) {
-        this.stavkaPolice = stavkaPolice;
     }
 
     public String getNaziv() {
@@ -85,10 +60,11 @@ public class Polica implements Serializable {
     @Override
     public String toString() {
         return "Polica{" +
-                "id=" + id + '\'' +
+                "id=" + id +
                 ", naziv='" + naziv + '\'' +
-                ", stavkaPolice=" + stavkaPolice + '\'' +
-                ", tip=" + tip.toString() + '\'' +
+                ", primarna=" + primarna +
+                ", stavkePolice=" + stavkePolice +
+                ", korisnik=" + korisnik +
                 '}';
     }
 }

@@ -6,34 +6,33 @@ import java.io.Serializable;
 import java.util.Date;
 
 @Entity
-@Table(name="knjiga")
 public class Knjiga implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column
+    @Column(name = "naslov")
     private String naslov;
-    @Column
+    @Column(name = "naslovnaFotografija")
     private String naslovnaFotografija;
 
-    @Column(unique = true)
+    @Column(unique = true,name = "ISBN")
     private String ISBN;
 
-    @Column
+    @Column(name = "datumObjavljivanja")
     private Date datumObjavljivanja;
 
-    @Column
-    private int  brojStrana;
-    @Column
+    @Column(name ="brojStrana")
+    private Long brojStrana;
+    @Column(name = "opis")
     private String opis;
 
     @OneToOne  //knjiga ima jedan zanr
-   // @JoinColumn(name = "zanr_id")
+    @JoinColumn(name = "zanr_id")
     private Zanr zanr;
 
-    @Column
+    @Column(name = "ocena")
     private double ocena;
 
     @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.MERGE)
@@ -42,7 +41,7 @@ public class Knjiga implements Serializable {
     public Knjiga(){}
 
 
-    public Knjiga(String naslov,String naslovnaFotografija,String ISBN,Date datumObjavljivanja,int brojStrana,double ocena,Zanr zanr)
+    public Knjiga(String naslov,String naslovnaFotografija,String ISBN,Date datumObjavljivanja,Long brojStrana,double ocena,Zanr zanr)
     {
         this.naslov = naslov;
         this.naslovnaFotografija = naslovnaFotografija;

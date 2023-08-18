@@ -3,9 +3,8 @@ package com.in51_2021.vebProjekat.entity;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
 
+@Entity
 public class Zanr implements Serializable {
 
     @Id
@@ -38,20 +37,12 @@ public class Zanr implements Serializable {
         this.id = id;
     }
 
-    public Set<Knjiga> getKnjige() {
-        return knjige;
-    }
-
-    public void setKnjige(Set<Knjiga> knjige) {
-        this.knjige = knjige;
-    }
 
     @Override
     public String toString() {
         return "Zanr{" +
                 "id=" + id +
                 ", naziv='" + naziv + '\'' +
-                ", knjige=" + knjige +
                 '}';
     }
 }

@@ -8,8 +8,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name = "korisnik")
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Korisnik implements Serializable {
 
     @Id
@@ -20,7 +19,7 @@ public class Korisnik implements Serializable {
     @Column
     protected String prezime;
 
-    @Column(unique = true)
+    @Column(unique = true,name = "korisnickoIme")
     protected String korisnickoIme;
 
     @Column(unique = true)
@@ -37,7 +36,7 @@ public class Korisnik implements Serializable {
     @Column
     protected String opis;
 
-    @Column
+    @Column(name = "uloga")
     @Enumerated(EnumType.STRING)
     private UlogaKorisnika uloga;
 
@@ -45,16 +44,12 @@ public class Korisnik implements Serializable {
     private Set<Polica> police=new HashSet<>();
 
 
-    public void napraviPrimarnePolice(){
-        police.add(new Polica("WantToRead",TipPolice.WANT_TO_READ));
-        police.add(new Polica("CurrentlyReading",TipPolice.CURRENTLY_READING));
-        police.add(new Polica("Read",TipPolice.READ);
-    }
+
     public Korisnik(String email, String ime) { //konstruktor koji postavlja ulogu novog korisnika na citaoca i pravi njegove primarne police
         this.email=email;
         this.ime=ime;
         this.uloga=UlogaKorisnika.CITALAC;
-        napraviPrimarnePolice();
+
 
     }
 
@@ -173,7 +168,7 @@ public class Korisnik implements Serializable {
                 ", lozinka='" + lozinka + '\'' +
                 ", datumRodjenja=" + datumRodjenja +
                 ", opis='" + opis + '\'' +
-                ", uloga=" + ulogaKorisnika + '\'' +
+                ", uloga=" + uloga + '\'' +
                 '}';
     }
 

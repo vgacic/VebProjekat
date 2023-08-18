@@ -1,7 +1,10 @@
 package com.in51_2021.vebProjekat.entity;
 
+import jakarta.persistence.Entity;
+
 import java.util.Date;
 
+@Entity
 public class Citalac extends Korisnik{
     public Citalac(){}
 

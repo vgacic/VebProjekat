@@ -15,7 +15,7 @@ public class Recenzija {
     @Column(name = "ocena")
     private Long ocena;
 
-    @Column(name = "teks")
+    @Column(name = "tekst")
     private String tekst;
 
     @Column(name="datumRecenzije")

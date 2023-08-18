@@ -8,9 +8,10 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
+@PrimaryKeyJoinColumn(name = "id")
 public class Autor extends Korisnik implements Serializable {
 
-    @Column
+    @Column(name = "aktivan")
     private boolean aktivan;
 
 
