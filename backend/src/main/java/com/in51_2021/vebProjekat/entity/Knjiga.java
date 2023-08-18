@@ -24,7 +24,7 @@ public class Knjiga implements Serializable {
     private Date datumObjavljivanja;
 
     @Column(name ="brojStrana")
-    private Long brojStrana;
+    private int brojStrana;
     @Column(name = "opis")
     private String opis;
 
@@ -38,10 +38,10 @@ public class Knjiga implements Serializable {
     @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.MERGE)
     private Autor autor;
 
-    public Knjiga(){}
+    public Knjiga(String kapijeAtine, String slika1, String isbn, String s, int i, int ocena, Zanr zanr3){}
 
 
-    public Knjiga(String naslov,String naslovnaFotografija,String ISBN,Date datumObjavljivanja,Long brojStrana,double ocena,Zanr zanr)
+    public Knjiga(String naslov,String naslovnaFotografija,String ISBN,Date datumObjavljivanja,int brojStrana,double ocena,Zanr zanr)
     {
         this.naslov = naslov;
         this.naslovnaFotografija = naslovnaFotografija;
@@ -92,11 +92,11 @@ public class Knjiga implements Serializable {
         this.datumObjavljivanja = datumObjavljivanja;
     }
 
-    public Long getBrojStrana() {
+    public int getBrojStrana() {
         return brojStrana;
     }
 
-    public void setBrojStrana(Long brojStrana) {
+    public void setBrojStrana(int brojStrana) {
         this.brojStrana = brojStrana;
     }
 
@@ -122,5 +122,21 @@ public class Knjiga implements Serializable {
 
     public void setOcena(double ocena) {
         this.ocena = ocena;
+    }
+
+
+    @Override
+    public String toString() {
+        return "Knjiga{" +
+                "id=" + id +
+                ", naslov='" + naslov + '\'' +
+                ", naslovnaFotografija='" + naslovnaFotografija + '\'' +
+                ", ISBN='" + ISBN + '\'' +
+                ", datumObjavljivanja=" + datumObjavljivanja +
+                ", brojStrana=" + brojStrana +
+                ", opis='" + opis + '\'' +
+                ", zanr=" + zanr +
+                ", ocena=" + ocena +
+                '}';
     }
 }
