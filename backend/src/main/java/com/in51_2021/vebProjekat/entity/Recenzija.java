@@ -31,7 +31,7 @@ public class Recenzija {
     }
 
 
-    public Recenzija(int ocena, String tekst, Date datumRecenzije) {
+    public Recenzija(Long ocena, String tekst, Date datumRecenzije) {
         this.ocena = ocena;
         this.tekst = tekst;
         this.datumRecenzije = datumRecenzije;

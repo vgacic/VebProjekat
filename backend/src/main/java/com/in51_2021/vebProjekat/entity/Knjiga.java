@@ -38,7 +38,6 @@ public class Knjiga implements Serializable {
     @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.MERGE)
     private Autor autor;
 
-    public Knjiga(String kapijeAtine, String slika1, String isbn, String s, int i, int ocena, Zanr zanr3){}
 
 
     public Knjiga(String naslov,String naslovnaFotografija,String ISBN,Date datumObjavljivanja,int brojStrana,double ocena,Zanr zanr)
