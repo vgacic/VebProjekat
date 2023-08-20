@@ -49,12 +49,28 @@ public class Polica implements Serializable {
         this.naziv = naziv;
     }
 
-    public boolean getPrimarna() {
+    public boolean isPrimarna() {
         return primarna;
     }
 
     public void setPrimarna(boolean primarna) {
         this.primarna = primarna;
+    }
+
+    public Set<StavkaPolice> getStavkePolice() {
+        return stavkePolice;
+    }
+
+    public void setStavkePolice(Set<StavkaPolice> stavkePolice) {
+        this.stavkePolice = stavkePolice;
+    }
+
+    public Korisnik getKorisnik() {
+        return korisnik;
+    }
+
+    public void setKorisnik(Korisnik korisnik) {
+        this.korisnik = korisnik;
     }
 
     @Override

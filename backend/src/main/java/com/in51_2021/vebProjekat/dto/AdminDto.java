@@ -116,4 +116,19 @@ public class AdminDto {
     public void setOpis(String opis) {
         this.opis = opis;
     }
+
+    @Override
+    public String toString() {
+        return "AdminDto{" +
+                "id=" + id +
+                ", ime='" + ime + '\'' +
+                ", prezime='" + prezime + '\'' +
+                ", korisnickoIme='" + korisnickoIme + '\'' +
+                ", email='" + email + '\'' +
+                ", lozinka='" + lozinka + '\'' +
+                ", datumRodjenja=" + datumRodjenja +
+                ", profilnaSlika='" + profilnaSlika + '\'' +
+                ", opis='" + opis + '\'' +
+                '}';
+    }
 }

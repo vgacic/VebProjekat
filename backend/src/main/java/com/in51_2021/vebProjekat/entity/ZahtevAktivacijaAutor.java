@@ -71,6 +71,22 @@ public class ZahtevAktivacijaAutor implements Serializable {
     public void setStatus(StatusZahteva status) {this.status = status;}
 
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     @Override
     public String toString() {
         return "ZahtevAktivacijaAutor{" +

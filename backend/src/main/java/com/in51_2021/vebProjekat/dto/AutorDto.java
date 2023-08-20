@@ -167,4 +167,23 @@ public class AutorDto {
     public void setObicnePolice(Set<Polica> obicnePolice) {
         this.obicnePolice = obicnePolice;
     }
+
+    @Override
+    public String toString() {
+        return "AutorDto{" +
+                "id=" + id +
+                ", ime='" + ime + '\'' +
+                ", prezime='" + prezime + '\'' +
+                ", korisnickoIme='" + korisnickoIme + '\'' +
+                ", email='" + email + '\'' +
+                ", lozinka='" + lozinka + '\'' +
+                ", datumRodjenja=" + datumRodjenja +
+                ", profilnaSlika='" + profilnaSlika + '\'' +
+                ", opis='" + opis + '\'' +
+                ", ulogaKorisnika=" + ulogaKorisnika +
+                ", aktivan=" + aktivan +
+                ", knjige=" + knjige +
+                ", obicnePolice=" + obicnePolice +
+                '}';
+    }
 }

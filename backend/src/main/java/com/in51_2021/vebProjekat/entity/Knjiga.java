@@ -123,6 +123,13 @@ public class Knjiga implements Serializable {
         this.ocena = ocena;
     }
 
+    public Autor getAutor() {
+        return autor;
+    }
+
+    public void setAutor(Autor autor) {
+        this.autor = autor;
+    }
 
     @Override
     public String toString() {
