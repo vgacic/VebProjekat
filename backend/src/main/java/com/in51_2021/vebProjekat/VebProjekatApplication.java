@@ -1,5 +1,6 @@
 package com.in51_2021.vebProjekat;
 
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
