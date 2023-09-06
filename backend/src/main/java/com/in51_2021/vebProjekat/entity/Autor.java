@@ -13,12 +13,6 @@ public class Autor extends Korisnik{
     @Column(name = "aktivan")
     private boolean aktivan;
 
-
-    @OneToMany(cascade = CascadeType.MERGE,fetch = FetchType.LAZY)
-    private Set<Knjiga> autoroveKnjige=new HashSet<>();
-
-
-
     public Autor()
     {
         super();
@@ -39,15 +33,6 @@ public class Autor extends Korisnik{
         this.aktivan=aktivan;
     }
 
-    public Set<Knjiga> getAutoroveKnjige(){
-        return autoroveKnjige;
-    }
-
-    public void setAutoroveKnjige(Set<Knjiga> autoroveKnjige)
-    {
-        this.autoroveKnjige=autoroveKnjige;
-    }
-
 
     public boolean isAktivan() {
         return aktivan;
@@ -63,7 +48,6 @@ public class Autor extends Korisnik{
         return "Autor{" +
                 super.toString() + '\'' +
                 ", aktivan=" + aktivan + '\'' +
-                ", knjige=" + autoroveKnjige + '\'' +
                 '}';
     }
 

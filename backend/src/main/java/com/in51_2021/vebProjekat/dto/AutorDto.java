@@ -24,13 +24,11 @@ public class AutorDto {
     private boolean aktivan;
 
 
-    private Set<Knjiga> knjige = new HashSet<>();
-
     private Set<Polica>obicnePolice=new HashSet<>();
 
     public AutorDto(){}
 
-    public AutorDto(Long id, String ime, String prezime, String korisnickoIme, String email, String lozinka, Date datumRodjenja, String profilnaSlika, String opis, UlogaKorisnika ulogaKorisnika, boolean aktivan, Set<Knjiga> knjige, Set<Polica> obicnePolice) {
+    public AutorDto(Long id, String ime, String prezime, String korisnickoIme, String email, String lozinka, Date datumRodjenja, String profilnaSlika, String opis, UlogaKorisnika ulogaKorisnika, boolean aktivan, Set<Polica> obicnePolice) {
         this.id = id;
         this.ime = ime;
         this.prezime = prezime;
@@ -42,7 +40,7 @@ public class AutorDto {
         this.opis = opis;
         this.ulogaKorisnika = ulogaKorisnika;
         this.aktivan = aktivan;
-        this.knjige = knjige;
+
         this.obicnePolice = obicnePolice;
     }
 
@@ -60,7 +58,6 @@ public class AutorDto {
         this.opis = autor.getOpis();
         this.ulogaKorisnika=autor.getUloga();
         this.aktivan=autor.isAktivan();
-        this.knjige = autor.getAutoroveKnjige();
         this.obicnePolice=autor.getPolice();
     }
 
@@ -152,13 +149,6 @@ public class AutorDto {
         this.aktivan = aktivan;
     }
 
-    public Set<Knjiga> getKnjige() {
-        return knjige;
-    }
-
-    public void setKnjige(Set<Knjiga> knjige) {
-        this.knjige = knjige;
-    }
 
     public Set<Polica> getObicnePolice() {
         return obicnePolice;
@@ -168,22 +158,4 @@ public class AutorDto {
         this.obicnePolice = obicnePolice;
     }
 
-    @Override
-    public String toString() {
-        return "AutorDto{" +
-                "id=" + id +
-                ", ime='" + ime + '\'' +
-                ", prezime='" + prezime + '\'' +
-                ", korisnickoIme='" + korisnickoIme + '\'' +
-                ", email='" + email + '\'' +
-                ", lozinka='" + lozinka + '\'' +
-                ", datumRodjenja=" + datumRodjenja +
-                ", profilnaSlika='" + profilnaSlika + '\'' +
-                ", opis='" + opis + '\'' +
-                ", ulogaKorisnika=" + ulogaKorisnika +
-                ", aktivan=" + aktivan +
-                ", knjige=" + knjige +
-                ", obicnePolice=" + obicnePolice +
-                '}';
-    }
 }

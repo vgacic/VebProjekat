@@ -24,15 +24,15 @@ public class Polica implements Serializable {
     private Set<StavkaPolice> stavkePolice=new HashSet<>();
 
 
-    @ManyToOne(fetch=FetchType.LAZY,cascade = CascadeType.MERGE)
-    @JoinColumn(name = "korisnik_id")
-    private Korisnik korisnik;
+
+    public Polica(){}
 
     public Polica(String naziv, boolean primarna) {
         this.naziv = naziv;
         this.primarna = primarna;
-
     }
+
+
     public Long getId() {
         return id;
     }
@@ -65,13 +65,6 @@ public class Polica implements Serializable {
         this.stavkePolice = stavkePolice;
     }
 
-    public Korisnik getKorisnik() {
-        return korisnik;
-    }
-
-    public void setKorisnik(Korisnik korisnik) {
-        this.korisnik = korisnik;
-    }
 
     @Override
     public String toString() {
@@ -80,7 +73,6 @@ public class Polica implements Serializable {
                 ", naziv='" + naziv + '\'' +
                 ", primarna=" + primarna +
                 ", stavkePolice=" + stavkePolice +
-                ", korisnik=" + korisnik +
                 '}';
     }
 }

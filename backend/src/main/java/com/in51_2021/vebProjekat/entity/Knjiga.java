@@ -39,7 +39,7 @@ public class Knjiga implements Serializable {
     private Autor autor;
 
 
-
+    public Knjiga(){}
     public Knjiga(String naslov,String naslovnaFotografija,String ISBN,Date datumObjavljivanja,int brojStrana,double ocena,Zanr zanr)
     {
         this.naslov = naslov;

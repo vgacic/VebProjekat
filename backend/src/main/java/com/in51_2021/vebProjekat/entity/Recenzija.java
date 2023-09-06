@@ -13,7 +13,7 @@ public class Recenzija {
     private Long id;
 
     @Column(name = "ocena")
-    private Long ocena;
+    private Float ocena;
 
     @Column(name = "tekst")
     private String tekst;
@@ -26,12 +26,10 @@ public class Recenzija {
     private Korisnik korisnik;
 
 
-    public Recenzija(){
-
-    }
+    public Recenzija(){}
 
 
-    public Recenzija(Long ocena, String tekst, Date datumRecenzije) {
+    public Recenzija(Float ocena, String tekst, Date datumRecenzije) {
         this.ocena = ocena;
         this.tekst = tekst;
         this.datumRecenzije = datumRecenzije;
@@ -44,10 +42,10 @@ public class Recenzija {
     public void setId(Long id) {
         this.id = id;
     }
-    public Long getOcena() {
+    public Float getOcena() {
         return ocena;
     }
-    public void setOcena(Long ocena) {
+    public void setOcena(Float ocena) {
         this.ocena = ocena;
     }
     public String getTekst() {return tekst;}

@@ -5,6 +5,7 @@ import com.in51_2021.vebProjekat.entity.Polica;
 import com.in51_2021.vebProjekat.entity.StavkaPolice;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class PolicaDto {
@@ -14,25 +15,19 @@ public class PolicaDto {
 
     private boolean primarna;
 
-    private Korisnik korisnik;
-    private Set<StavkaPolice>stavkePolice=new HashSet<>();
+    private List<NaslovIdKnjigeDto> knjige;
 
-    PolicaDto(){}
-    PolicaDto(Long id,String naziv,boolean primarna,Korisnik korisnik,Set<StavkaPolice> stavkePolice)
-    {
+    public PolicaDto(Long id,String naziv,boolean primarna,Korisnik korisnik,List<NaslovIdKnjigeDto> knjige) {
         this.id = id;
         this.naziv = naziv;
         this.primarna = primarna;
-        this.korisnik = korisnik;
-        this.stavkePolice=stavkePolice;
+        this.knjige = knjige;
     }
 
     public PolicaDto(Polica polica) {
         this.id = polica.getId();
         this.naziv = polica.getNaziv();
         this.primarna = polica.isPrimarna();
-        this.korisnik = polica.getKorisnik();
-        this.stavkePolice = polica.getStavkePolice();
     }
 
     public Long getId() {
@@ -59,30 +54,11 @@ public class PolicaDto {
         this.primarna = primarna;
     }
 
-    public Korisnik getKorisnik() {
-        return korisnik;
+    public List<NaslovIdKnjigeDto> getKnjige() {
+        return knjige;
     }
 
-    public void setKorisnik(Korisnik korisnik) {
-        this.korisnik = korisnik;
-    }
-
-    public Set<StavkaPolice> getStavkePolice() {
-        return stavkePolice;
-    }
-
-    public void setStavkePolice(Set<StavkaPolice> stavkePolice) {
-        this.stavkePolice = stavkePolice;
-    }
-
-    @Override
-    public String toString() {
-        return "PolicaDto{" +
-                "id=" + id +
-                ", naziv='" + naziv + '\'' +
-                ", primarna=" + primarna +
-                ", korisnik=" + korisnik +
-                ", stavkePolice=" + stavkePolice +
-                '}';
+    public void setKnjige(List<NaslovIdKnjigeDto> knjige) {
+        this.knjige = knjige;
     }
 }

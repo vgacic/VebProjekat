@@ -10,7 +10,6 @@ public class KnjigaDto {
 
     private Long id;
     private String naslov;
-    private String naslovnaFotografija;
     private String ISBN;
 
     private Date datumObjavljivanja;
@@ -20,35 +19,35 @@ public class KnjigaDto {
     private String opis;
     private Zanr zanr;
     private double ocena;
-    private Autor autor;
+    private PodaciOAutoruZaKnjiguDto podaciOAutoruZaKnjiguDto;
 
     public KnjigaDto(){}
 
-    public KnjigaDto(Long id, String naslov, String naslovnaFotografija, String ISBN, Date datumObjavljivanja, int brojStrana, String opis,double ocena,Autor autor,Zanr zanr)
+    public KnjigaDto(Long id, String naslov, String ISBN, Date datumObjavljivanja, int brojStrana, String opis,double ocena,Autor autor,Zanr zanr)
     {
         this.id=id;
         this.naslov=naslov;
-        this.naslovnaFotografija=naslovnaFotografija;
+
         this.ISBN=ISBN;
         this.datumObjavljivanja=datumObjavljivanja;
         this.brojStrana=brojStrana;
         this.opis=opis;
         this.ocena=ocena;
-        this.autor=autor;
+        this.podaciOAutoruZaKnjiguDto=new PodaciOAutoruZaKnjiguDto(autor.getId(),autor.getIme(),autor.getPrezime());
         this.zanr=zanr;
     }
 
     public KnjigaDto(Knjiga knjiga)
     {
-        this.id=knjiga.getId();
-        this.naslov=knjiga.getNaslov();
-        this.naslovnaFotografija= knjiga.getNaslovnaFotografija();
+        Autor autor=new Autor();  //ovo ovako ide?
+        this.id= knjiga.getId();
+        this.naslov= knjiga.getNaslov();
         this.ISBN= knjiga.getISBN();
         this.datumObjavljivanja=knjiga.getDatumObjavljivanja();
         this.brojStrana= knjiga.getBrojStrana();
-        this.opis= knjiga.getOpis();
-        this.ocena=knjiga.getOcena();
-        this.autor=knjiga.getAutor();
+        this.opis=knjiga.getOpis();
+        this.ocena= knjiga.getOcena();
+        this.podaciOAutoruZaKnjiguDto=new PodaciOAutoruZaKnjiguDto(autor.getId(),autor.getIme(),autor.getPrezime());
         this.zanr=knjiga.getZanr();
     }
 
@@ -68,13 +67,13 @@ public class KnjigaDto {
         this.naslov = naslov;
     }
 
-    public String getNaslovnaFotografija() {
-        return naslovnaFotografija;
-    }
+   // public String getNaslovnaFotografija() {
+     //   return naslovnaFotografija;
+  //  }
 
-    public void setNaslovnaFotografija(String naslovnaFotografija) {
-        this.naslovnaFotografija = naslovnaFotografija;
-    }
+   // public void setNaslovnaFotografija(String naslovnaFotografija) {
+        //this.naslovnaFotografija = naslovnaFotografija;
+   // }
 
     public String getISBN() {
         return ISBN;
@@ -124,12 +123,12 @@ public class KnjigaDto {
         this.ocena = ocena;
     }
 
-    public Autor getAutor() {
-        return autor;
+    public PodaciOAutoruZaKnjiguDto getAutor() {
+        return podaciOAutoruZaKnjiguDto;
     }
 
-    public void setAutor(Autor autor) {
-        this.autor = autor;
+    public void setAutor(PodaciOAutoruZaKnjiguDto autor) {
+        this.podaciOAutoruZaKnjiguDto = autor;
     }
 
     @Override
@@ -137,14 +136,13 @@ public class KnjigaDto {
         return "KnjigaDto{" +
                 "id=" + id +
                 ", naslov='" + naslov + '\'' +
-                ", naslovnaFotografija='" + naslovnaFotografija + '\'' +
+               // ", naslovnaFotografija='" + naslovnaFotografija + '\'' +
                 ", ISBN='" + ISBN + '\'' +
                 ", datumObjavljivanja=" + datumObjavljivanja +
                 ", brojStrana=" + brojStrana +
                 ", opis='" + opis + '\'' +
                 ", zanr=" + zanr +
-                ", ocena=" + ocena +
-                ", autor=" + autor +
+                ", ocena=" + ocena+
                 '}';
     }
 }

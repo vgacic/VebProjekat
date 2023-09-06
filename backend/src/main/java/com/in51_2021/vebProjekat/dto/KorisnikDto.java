@@ -4,9 +4,7 @@ import com.in51_2021.vebProjekat.entity.Korisnik;
 import com.in51_2021.vebProjekat.entity.Polica;
 import com.in51_2021.vebProjekat.entity.UlogaKorisnika;
 
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 public class KorisnikDto {
     private Long id;
@@ -19,12 +17,12 @@ public class KorisnikDto {
     private String profilnaSlika;
     private String opis;
     private UlogaKorisnika uloga;
-    private Set<Polica> police=new HashSet<>();
+    private List<NazivIdPoliceDto> police=new ArrayList<>();
     private String novaLozinka;
 
     public KorisnikDto(){}
 
-    public KorisnikDto(Long id, String ime, String prezime, String korisnickoIme, String email, String lozinka, Date datumRodjenja, String profilnaSlika, String opis, UlogaKorisnika uloga,  Set<Polica> police)
+    public KorisnikDto(Long id, String ime, String prezime, String korisnickoIme, String email, String lozinka, Date datumRodjenja, String profilnaSlika, String opis, UlogaKorisnika uloga,  List<NazivIdPoliceDto> police)
     {
         this.id = id;
         this.ime = ime;
@@ -52,7 +50,6 @@ public class KorisnikDto {
         this.profilnaSlika = korisnik.getProfilnaSlika();
         this.opis = korisnik.getOpis();
         this.uloga=korisnik.getUloga();
-        this.police=korisnik.getPolice();
     }
 
     public Long getId() {
@@ -135,11 +132,11 @@ public class KorisnikDto {
         this.uloga = uloga;
     }
 
-    public Set<Polica> getPolice() {
+    public List<NazivIdPoliceDto> getPolice() {
         return police;
     }
 
-    public void setPolice(Set<Polica> police) {
+    public void setPolice(List<NazivIdPoliceDto> police) {
         this.police = police;
     }
 

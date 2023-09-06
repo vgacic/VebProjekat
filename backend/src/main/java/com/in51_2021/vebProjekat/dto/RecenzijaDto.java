@@ -9,7 +9,7 @@ public class RecenzijaDto {
 
     private Long id;
 
-    private Long ocena;
+    private Float ocena;
 
     private String tekst;
 
@@ -17,7 +17,7 @@ public class RecenzijaDto {
 
     public RecenzijaDto(){}
 
-    public RecenzijaDto(Long id,Long ocena,String tekst,Date datumRecenzije)
+    public RecenzijaDto(Long id,Float ocena,String tekst,Date datumRecenzije)
     {
         this.id=id;
         this.ocena=ocena;
@@ -41,11 +41,11 @@ public class RecenzijaDto {
         this.id = id;
     }
 
-    public Long getOcena() {
+    public Float getOcena() {
         return ocena;
     }
 
-    public void setOcena(Long ocena) {
+    public void setOcena(Float ocena) {
         this.ocena = ocena;
     }
 

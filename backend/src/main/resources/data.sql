@@ -33,17 +33,13 @@ INSERT INTO KNJIGA(naslov,broj_strana,datum_objavljivanja,ocena,opis,ISBN,zanr_i
 INSERT INTO KNJIGA(naslov,broj_strana,datum_objavljivanja,ocena,opis,ISBN,zanr_id,autor_id) VALUES('It starts with us',300,'2022-10-18',10,'Super','978-13-98-51817-9',5,5);
 INSERT INTO KNJIGA(naslov,broj_strana,datum_objavljivanja,ocena,opis,ISBN,zanr_id,autor_id) VALUES('It ends with us',300,'2016-10-02',10,'Odlicna','978-14-71-15626-7',5,5);
 
-INSERT INTO autor_autorove_knjige(autor_id,autorove_knjige_id) VALUES(4,2);
-INSERT INTO autor_autorove_knjige(autor_id,autorove_knjige_id) VALUES(4,3);
-INSERT INTO autor_autorove_knjige(autor_id,autorove_knjige_id) VALUES(5,1);
 
-
-INSERT INTO POLICA(naziv,primarna,korisnik_id) VALUES('Want to read',true,2);
-INSERT INTO POLICA(naziv,primarna,korisnik_id) VALUES('Currently reading',true,2);
-INSERT INTO POLICA(naziv,primarna,korisnik_id) VALUES('Read',true,2);
-INSERT INTO POLICA(naziv,primarna,korisnik_id) VALUES('Want to read',true,3);
-INSERT INTO POLICA(naziv,primarna,korisnik_id) VALUES('Currently reading',true,3);
-INSERT INTO POLICA(naziv,primarna,korisnik_id) VALUES('Read',true,3);
+INSERT INTO POLICA(naziv,primarna) VALUES('Want to read',true);
+INSERT INTO POLICA(naziv,primarna) VALUES('Currently reading',true);
+INSERT INTO POLICA(naziv,primarna) VALUES('Read',true);
+INSERT INTO POLICA(naziv,primarna) VALUES('Want to read',true);
+INSERT INTO POLICA(naziv,primarna) VALUES('Currently reading',true);
+INSERT INTO POLICA(naziv,primarna) VALUES('Read',true);
 INSERT INTO POLICA(naziv,primarna) VALUES('Want to read',true);
 INSERT INTO POLICA(naziv,primarna) VALUES('Currently reading',true);
 INSERT INTO POLICA(naziv,primarna) VALUES('Read',true);
@@ -61,10 +57,10 @@ INSERT INTO POLICA(naziv,primarna) VALUES('Currently reading',true);
 INSERT INTO POLICA(naziv,primarna) VALUES('Read',true);
 
 
-INSERT INTO POLICA(naziv,primarna,korisnik_id) VALUES('Omiljene',false,2);
-INSERT INTO POLICA(naziv,primarna,korisnik_id) VALUES('Procitacu opet',false,2);
-INSERT INTO POLICA(naziv,primarna,korisnik_id) VALUES('Omiljene',false,3);
-INSERT INTO POLICA(naziv,primarna,korisnik_id) VALUES('Procitacu opet',false,3);
+INSERT INTO POLICA(naziv,primarna) VALUES('Omiljene',false);
+INSERT INTO POLICA(naziv,primarna) VALUES('Procitacu opet',false);
+INSERT INTO POLICA(naziv,primarna) VALUES('Omiljene',false);
+INSERT INTO POLICA(naziv,primarna) VALUES('Procitacu opet',false);
 
 
 INSERT INTO korisnik_police(korisnik_id,police_id) VALUES(2,1);

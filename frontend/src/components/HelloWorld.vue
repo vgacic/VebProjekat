@@ -2,6 +2,8 @@
   <div class="hello">
     <h1>{{ message }}</h1>
     <button @click="fetchData">Cao</button>
+    
+    
     <div v-if="response">
       <h3>Response from Spring Boot:</h3>
       <p>{{ response }}</p>
