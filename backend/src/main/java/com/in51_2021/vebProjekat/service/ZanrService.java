@@ -18,4 +18,8 @@ public class ZanrService {
     public List<Zanr> findAll() {
         return zanrRepository.findAll();
     }
+
+    public Zanr save(Zanr zanr) {
+        return zanrRepository.save(zanr);
+    }
 }

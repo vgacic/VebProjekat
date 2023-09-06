@@ -12,25 +12,31 @@ public class RecenzijaDto {
     private Float ocena;
 
     private String tekst;
-
-    private Date datumRecenzije;
+    private Long idStavke;
 
     public RecenzijaDto(){}
 
-    public RecenzijaDto(Long id,Float ocena,String tekst,Date datumRecenzije)
+    public RecenzijaDto(Long id,Float ocena,String tekst,Long idStavke)
     {
         this.id=id;
         this.ocena=ocena;
         this.tekst=tekst;
-        this.datumRecenzije=datumRecenzije;
+        this.idStavke=idStavke;
+
+    }
+
+    public Long getIdStavke() {
+        return idStavke;
+    }
+
+    public void setIdStavke(Long idStavke) {
+        this.idStavke = idStavke;
     }
 
     public RecenzijaDto(Recenzija recenzija){
         this.id= recenzija.getId();
         this.ocena= recenzija.getOcena();
         this.tekst= recenzija.getTekst();
-        this.datumRecenzije=recenzija.getDatumRecenzije();
-
     }
 
     public Long getId() {
@@ -57,21 +63,6 @@ public class RecenzijaDto {
         this.tekst = tekst;
     }
 
-    public Date getDatumRecenzije() {
-        return datumRecenzije;
-    }
 
-    public void setDatumRecenzije(Date datumRecenzije) {
-        this.datumRecenzije = datumRecenzije;
-    }
 
-    @Override
-    public String toString() {
-        return "RecenzijaDto{" +
-                "id=" + id +
-                ", ocena=" + ocena +
-                ", tekst='" + tekst + '\'' +
-                ", datumRecenzije=" + datumRecenzije +
-                '}';
-    }
 }

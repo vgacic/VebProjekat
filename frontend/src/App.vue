@@ -7,7 +7,12 @@
     <router-link to="/knjige">Prikaz svih knjiga</router-link>|
     <router-link to="/recenzije">Prikaz svih recenzija</router-link>|
     <router-link to="/zanrovi">Prikaz svih zanrova</router-link>|
-    <router-link to="/">Login</router-link>
+    <router-link to="/">Login</router-link>|
+    <router-link to="/zahtevi">Pregled svih zahteva</router-link>|
+    <router-link to="/dodajZanr">Dodaj zanr</router-link>|
+    <router-link to="/dodajRecenziju">Dodaj recenziju</router-link>|
+    <router-link to="/izmeniRecenziju">Izmeni recenziju</router-link>|
+    <router-link to="/dodajKnjigu">Dodaj knjigu</router-link>
     <hr>
     <!-- <router-link to="/logout">Logout</router-link> -->
     <button @click="logout()">Logout</button>

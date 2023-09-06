@@ -3,15 +3,14 @@ package com.in51_2021.vebProjekat.controller;
 import com.in51_2021.vebProjekat.dto.KorisnikDto;
 import com.in51_2021.vebProjekat.dto.ZanrDto;
 import com.in51_2021.vebProjekat.entity.Korisnik;
+import com.in51_2021.vebProjekat.entity.UlogaKorisnika;
 import com.in51_2021.vebProjekat.entity.Zanr;
 import com.in51_2021.vebProjekat.service.ZanrService;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,5 +35,23 @@ public class ZanrController {
             zanroviDto.add(zanrDto);
         }
         return ResponseEntity.ok(zanroviDto);
+    }
+
+    @PostMapping("/dodajZanr")
+    public ResponseEntity<String> dodajZanr(@RequestBody Zanr zanr,HttpSession session)
+    {
+        Korisnik korisnik=(Korisnik) session.getAttribute("korisnik");
+        if(korisnik==null)
+        {
+            return new ResponseEntity("Niste ulogovani", HttpStatus.FORBIDDEN);
+        }
+
+        if(!korisnik.getUloga().equals(UlogaKorisnika.ADMINISTRATOR))
+        {
+            return new ResponseEntity("Morate biti admin da biste dodali zanr",HttpStatus.FORBIDDEN);
+        }
+
+        zanrService.save(zanr);
+        return new ResponseEntity("Zanr uspesno dodat",HttpStatus.OK);
     }
 }

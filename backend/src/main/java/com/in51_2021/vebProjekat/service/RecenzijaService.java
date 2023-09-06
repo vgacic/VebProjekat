@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class RecenzijaService {
@@ -18,7 +19,18 @@ public class RecenzijaService {
     public List<Recenzija> findAll() {
         return recenzijaRepository.findAll();
     }
-    public Recenzija save(Recenzija recenzija) { return recenzijaRepository.save(recenzija); }
+
+    public Recenzija save(Recenzija recenzija) {
+        return recenzijaRepository.save(recenzija);
+    }
 
 
+    public Recenzija findOne(Long id) {
+        Optional<Recenzija> nadjena = recenzijaRepository.findById(id);
+        if (nadjena.isPresent()) {
+            return nadjena.get();
+        }
+         else return null;
+
+    }
 }

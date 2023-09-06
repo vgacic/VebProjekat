@@ -26,6 +26,7 @@ public class AutorDto {
 
     private Set<Polica>obicnePolice=new HashSet<>();
 
+
     public AutorDto(){}
 
     public AutorDto(Long id, String ime, String prezime, String korisnickoIme, String email, String lozinka, Date datumRodjenja, String profilnaSlika, String opis, UlogaKorisnika ulogaKorisnika, boolean aktivan, Set<Polica> obicnePolice) {

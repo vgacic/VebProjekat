@@ -50,7 +50,7 @@ public class PocetnaStranicaController {
 
         session.setAttribute("korisnik",prijavljen);
 //        HttpHeaders headers = new HttpHeaders();
-//        headers.add("Set-Cookie","JSESSIONID=" + session.getId() + "; Max-Age=604800");
+//        headers.add("Set-Cookie","JSESSIONID=" + session.getIdKnjige() + "; Max-Age=604800");
 //        return ResponseEntity.status(HttpStatus.OK).headers(headers).build();
         return new ResponseEntity<>("Uspesno prijavljen", HttpStatus.OK);
     }
@@ -109,6 +109,22 @@ public class PocetnaStranicaController {
         return new ResponseEntity<>("Uspesna odjava",HttpStatus.OK);
     }
 
+    @GetMapping("/admin")
+    public ResponseEntity<Boolean> admin(HttpSession session)
+    {
+        Korisnik korisnik=(Korisnik) session.getAttribute("korisnik");
+
+        if(korisnik==null)
+        {
+            return new ResponseEntity<>(false,HttpStatus.FORBIDDEN);
+        }
+        if(!korisnik.getUloga().equals(UlogaKorisnika.ADMINISTRATOR))
+        {
+            return new ResponseEntity<>(false,HttpStatus.FORBIDDEN);
+        }
+        return new ResponseEntity<>(true,HttpStatus.OK);
+
+    }
 
 
 

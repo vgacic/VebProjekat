@@ -28,6 +28,7 @@
         </div>
         <div>
           <button v-on:click="submit()">Registruj se</button>
+          <button v-if="admin" v-on:click="registrujAutora()">Registruj autora</button>
         </div>
       </form>
       <p v-if="message">{{ message }}</p>
@@ -48,8 +49,13 @@ import axios from 'axios'
       lozinka:"",
       potvrdaLozinke:""
       },
-    
+      admin:false
     };
+  },
+  created(){
+    axios.get(`http://localhost:8880/api/admin`,{withCredentials:true}).then(response=>{
+      this.admin=response.data;
+    })
   },
   methods: {
       submit(){
@@ -65,6 +71,9 @@ import axios from 'axios'
               //this.$router.push("/knjige");
             
         .catch(error=>{console.log(error)})
+      },
+      registrujAutora(){
+        axios.post(`http://localhost:8880/api/registrujAutora`,this.registracijaDto)
       }
 
   }

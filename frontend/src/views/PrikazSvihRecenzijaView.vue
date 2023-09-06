@@ -4,9 +4,9 @@
   
       <ul class="recenzija-list">
         <li v-for="recenzija in recenzije" :key="recenzija.id" class="recenzija-item">
-          <p>Naslov: {{ recenzija.naslov }}</p>
+          <p>Naslov: {{ recenzija.tekst }}</p>
           <p>Ocena: {{ recenzija.ocena }}</p>
-          <p>Komentar: {{ recenzija.komentar }}</p>
+          <p>Komentar: {{ recenzija.datumRecenzije }}</p>
          
         </li>
       </ul>

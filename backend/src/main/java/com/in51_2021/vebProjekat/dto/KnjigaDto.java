@@ -67,13 +67,6 @@ public class KnjigaDto {
         this.naslov = naslov;
     }
 
-   // public String getNaslovnaFotografija() {
-     //   return naslovnaFotografija;
-  //  }
-
-   // public void setNaslovnaFotografija(String naslovnaFotografija) {
-        //this.naslovnaFotografija = naslovnaFotografija;
-   // }
 
     public String getISBN() {
         return ISBN;

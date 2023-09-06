@@ -1,21 +1,32 @@
 package com.in51_2021.vebProjekat.dto;
 
 public class NaslovIdKnjigeDto {
-    private Long id;
+    private Long idKnjige;
     private String naslov;
     private Float ocena;
+    private Long idStavke;
 
-    public NaslovIdKnjigeDto(Long id, String naslov) {
-        this.id = id;
+    public NaslovIdKnjigeDto(Long idKnjige, String naslov,Long idStavke) {
+        this.idKnjige = idKnjige;
         this.naslov = naslov;
+        this.idStavke=idStavke;
+
     }
 
-    public Long getId() {
-        return id;
+    public Long getIdStavke() {
+        return idStavke;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setIdStavke(Long idStavke) {
+        this.idStavke = idStavke;
+    }
+
+    public Long getIdKnjige() {
+        return idKnjige;
+    }
+
+    public void setIdKnjige(Long idKnjige) {
+        this.idKnjige = idKnjige;
     }
 
     public String getNaslov() {

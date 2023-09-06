@@ -34,7 +34,7 @@ public class PolicaController {
         PolicaDto policaDto = new PolicaDto(polica);
         List<NaslovIdKnjigeDto> knjige = new ArrayList<>();
         for (StavkaPolice s : polica.getStavkePolice()) {
-            NaslovIdKnjigeDto dto = new NaslovIdKnjigeDto(s.getKnjiga().getId(), s.getKnjiga().getNaslov());
+            NaslovIdKnjigeDto dto = new NaslovIdKnjigeDto(s.getKnjiga().getId(), s.getKnjiga().getNaslov(),s.getId());
             if (s.getRecenzija() != null) {
                 dto.setOcena(s.getRecenzija().getOcena());
             }

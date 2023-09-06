@@ -14,6 +14,11 @@ import PrikazSvihZanrovaView from '../views/PrikazSvihZanrovaView'
 import PolicaView from '../views/PolicaView.vue'
 import KnjigaView from '../views/KnjigaView.vue'
 import PrikazSvihKnjigaView from '../views/PrikazSvihKnjiga.vue'
+import ZahteviView from '../views/ZahteviView.vue'
+import DodajZanrView from '../views/DodajZanrView.vue'
+import DodajRecenzijuView from '../views/DodajRecenzijuView.vue'
+import IzmeniRecenzijuView from '../views/IzmeniRecenzijuView.vue'
+import DodajKnjiguView from '../views/DodajKnjiguView'
 
 
 
@@ -97,6 +102,31 @@ const routes = [
     path:'/knjige',
     name:'KnjigeView',
     component:PrikazSvihKnjigaView
+  },
+  {
+    path:'/zahtevi',
+    name:'ZahteviView',
+    component:ZahteviView
+  },
+  {
+    path:'/dodajZanr',
+    name:'DodajZanrView',
+    component:DodajZanrView
+  },
+  {
+    path:'/dodajRecenziju/:id',
+    name:'DodajRecenzijuView',
+    component:DodajRecenzijuView
+  },
+  {
+    path:'/izmeniRecenziju/:id',
+    name:'IzmeniRecenzijuView',
+    component:IzmeniRecenzijuView
+  },
+  {
+    path:'/dodajKnjigu',
+    name:'DodajKnjiguView',
+    component:DodajKnjiguView
   }
 ]
 
