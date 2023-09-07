@@ -16,9 +16,9 @@ export default{
     name:"DodajZanrView",
     data(){
     return{
-       zanr:{
-        naziv:""
-       }
+        zanr: {
+            naziv:""
+        }
 
         }
     },
@@ -27,9 +27,8 @@ export default{
         submit(){
             
             axios
-            .post(`http://localhost:8880/api/dodajZanr`,this.zanr)
+            .post(`http://localhost:8880/api/dodajZanr`,this.zanr, {withCredentials:true})
             .then(response=>{ 
-                this.zanr=response.data;
                 console.log("Zanr uspesno dodat",response.data);
             })
             .catch(error=>{

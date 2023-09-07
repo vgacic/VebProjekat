@@ -96,7 +96,7 @@ public class PocetnaStranicaController {
     }
 
 
-    @PostMapping("/odjava")
+    @GetMapping("/odjava")
     public ResponseEntity<String> logout(HttpSession session)
     {
         Korisnik korisnik=(Korisnik) session.getAttribute("korisnik");

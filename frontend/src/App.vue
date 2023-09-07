@@ -2,20 +2,17 @@
   <nav>
     <router-link to="/pocetna">Pocetna</router-link> |
     <router-link to="/about">About</router-link>|
-    <router-link to="/registracija">Registracija</router-link>|
     <router-link to="/korisnici">Prikaz svih korisnika</router-link>|
     <router-link to="/knjige">Prikaz svih knjiga</router-link>|
     <router-link to="/recenzije">Prikaz svih recenzija</router-link>|
     <router-link to="/zanrovi">Prikaz svih zanrova</router-link>|
-    <router-link to="/">Login</router-link>|
     <router-link to="/zahtevi">Pregled svih zahteva</router-link>|
-    <router-link to="/dodajZanr">Dodaj zanr</router-link>|
-    <router-link to="/dodajRecenziju">Dodaj recenziju</router-link>|
-    <router-link to="/izmeniRecenziju">Izmeni recenziju</router-link>|
-    <router-link to="/dodajKnjigu">Dodaj knjigu</router-link>
+    <router-link to="/dodajZanr" v-if="admin">Dodaj zanr</router-link>|
+    <router-link to="/registracija">Registracija</router-link>|
+    <router-link to="/">Login</router-link>|
+    <button @click="logout()">Logout</button>
     <hr>
     <!-- <router-link to="/logout">Logout</router-link> -->
-    <button @click="logout()">Logout</button>
 
     <hr>
     <form>
@@ -33,21 +30,29 @@ import axios from 'axios';
 export default{
   data(){
     return{
-      query:""
+      query:"",
+      admin:false
     }
+  },
+  created() {
+    axios.get('http://localhost:8880/api/admin', {withCredentials:true})
+    .then(response => {this.admin = response.data})
+    .catch(error => {console.error(error)})
   },
   methods:{
     submit(){
       this.$router.push("/pretraga/"+this.query);
     },
     logout(){
-      axios
-      this.$cookies.remove('JSESSIONID'); //nece da obrise JSESSIONID mora rucno
-      this.$cookies.set('PRIJAVLJEN',false);
-      this.$router.go('/');
+      axios.get("http://localhost:8880/api/odjava", {withCredentials:true})
+      .then(response => {
+        console.log(response)
+        this.$cookies.remove('JSESSIONID'); //nece da obrise JSESSIONID mora rucno
+        this.$cookies.set('PRIJAVLJEN',false);
+        this.$router.push('/pocetna');
+      })
+      .catch(error => {console.error(error)})
     }
-
-
   }
 }
 </script>

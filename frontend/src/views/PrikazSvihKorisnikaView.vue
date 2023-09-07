@@ -11,7 +11,7 @@
                <p>E-mail: {{korisnik.email}}</p>
               <p>Uloga: {{korisnik.uloga}}</p>
 
-            <button v-on:click="test(korisnik.id)">Klikni me</button>
+            <button v-on:click="test(korisnik.id)">Detaljnije</button>
             </li>
           </ul>
         
@@ -30,7 +30,7 @@ export default {
     };
   },
   created() { 
-        axios.get(`http://localhost:8880/api/korisnici`)
+        axios.get(`http://localhost:8880/api/korisnici`,{withCredentials:true})
         .then(response=>{
           this.korisnici=response.data;
         })

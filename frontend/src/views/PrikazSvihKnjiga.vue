@@ -4,13 +4,13 @@
             <ul class="book-list">
                 
                 <li v-for="knjiga in knjige" :key="knjiga.id" class="knjiga-item">
-                    <p>Naslov {{ knjiga.naslov }}</p>
-                    <p>ISBN {{knjiga.ISBN}}</p>
-                    <p>Datum objavljivanja {{knjiga.datumObjavljivanja }} </p>
-                    <p>Broj strana {{ knjiga.brojStrana}}</p>
-                    <p>Opis {{ knjiga.opis}}</p>
-                    <p>Zanr {{knjiga.zan}}</p>
-                    <p>Ocena {{ knjiga.ocena }}</p>
+                    <p>Naslov : {{ knjiga.naslov }}</p>
+                    <p>ISBN : {{knjiga.isbn}}</p>
+                    <p>Datum objavljivanja : {{knjiga.datumObjavljivanja }} </p>
+                    <p>Broj strana : {{ knjiga.brojStrana}}</p>
+                    <p>Opis : {{ knjiga.opis}}</p>
+                    <p v-if="knjiga.zanr">Zanr : {{knjiga.zanr.naziv}}</p>
+                    <p>Ocena : {{ knjiga.ocena }}</p>
                 </li>
             </ul>
         </div>

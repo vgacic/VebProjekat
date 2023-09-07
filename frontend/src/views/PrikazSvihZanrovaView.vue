@@ -4,7 +4,7 @@
   
       <ul class="zanr-list">
         <li v-for="zanr in zanrovi" :key="zanr.id" class="zanr-item">
-          <p> {{ zanr.naziv }}</p>
+          <router-link :to='"/zanr/"+zanr.id'>{{ zanr.naziv }}</router-link>
         </li>
       </ul>
     </div>

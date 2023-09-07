@@ -1,6 +1,6 @@
 <template>
     <div v-if="this.$route.params.id">
-      <h2>Dodavanje knjige</h2>
+      <h2>Izmena knjige</h2>
       <form class="knjiga-form">
         <div class="form-group">
           <label for="naslov">Naslov: </label>
@@ -15,7 +15,7 @@
           <label for="naslov">Opis: </label>
           <input type="text" id="opis" v-model="knjiga.opis">
         </div>
-        <button v-on:click="submit()">Dodaj knjigu</button>
+        <button v-on:click="submit()">Izmeni knjigu</button>
       </form>
     </div>
   </template>
@@ -24,7 +24,7 @@
   import axios from 'axios';
   
   export default {
-    name: "DodajKnjiguView",
+    name: "IzmenaKnjigeView",
     data() {
       return {
         knjiga: {
@@ -35,10 +35,13 @@
         }
       };
     },
+    created() {
+        axios.get('http://localhost:8880/api/knjiga/' + this.$route.params.id).then(response => { this.knjiga = response.data}).catch(error => {console.error(error)})
+    },
     methods: {
       submit() {
         axios
-          .post(`http://localhost:8880/api/dodajKnjigu/` + this.$route.params.id, this.knjiga, {withCredentials:true})
+          .put(`http://localhost:8880/api/izmenaKnjige/` + this.$route.params.id, this.knjiga, {withCredentials:true})
           .then((response) => {
             console.log("Knjiga uspešno dodata", response.data);
             this.knjiga = response.data

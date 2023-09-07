@@ -34,7 +34,7 @@ export default{
        submit(){
            this.recenzija.idStavke=this.$route.params.id;
            axios
-           .post(`http://localhost:8880/api/dodajRecenziju`,this.recenzija)
+           .post(`http://localhost:8880/api/dodajRecenziju`,this.recenzija, {withCredentials:true})
            .catch(error=>{
                console.error("Greska pri dodavanju recenzije",error)
            })

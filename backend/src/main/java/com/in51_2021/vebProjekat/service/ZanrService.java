@@ -22,4 +22,8 @@ public class ZanrService {
     public Zanr save(Zanr zanr) {
         return zanrRepository.save(zanr);
     }
+
+    public Zanr findOne(Long id) {
+        return zanrRepository.findById(id).orElse(null);
+    }
 }

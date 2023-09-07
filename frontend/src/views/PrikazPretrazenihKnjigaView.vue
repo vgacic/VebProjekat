@@ -10,7 +10,7 @@
                     <p>Datum objavljivanja {{knjiga.datumObjavljivanja }} </p>
                     <p>Broj strana {{ knjiga.brojStrana}}</p>
                     <p>Opis {{ knjiga.opis}}</p>
-                    <p>Zanr {{knjiga.zanr}}</p>
+                    <p>Zanr {{knjiga.zanr.naziv}}</p>
                     <p>Ocena {{ knjiga.ocena }}</p>
                 </li>
             </ul>

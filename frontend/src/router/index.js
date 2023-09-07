@@ -19,8 +19,10 @@ import DodajZanrView from '../views/DodajZanrView.vue'
 import DodajRecenzijuView from '../views/DodajRecenzijuView.vue'
 import IzmeniRecenzijuView from '../views/IzmeniRecenzijuView.vue'
 import DodajKnjiguView from '../views/DodajKnjiguView'
-
-
+import ZanrView from '../views/ZanrView.vue'
+import IzmenaKorisnikaView from '../views/IzmenaKorisnikaView.vue'
+import IzmenaNeaktivnogAutoraView from '../views/IzmenaNeaktivnogAutoraView.vue'
+import IzmenaKnjigeView from '../views/IzmenaKnjigeView.vue'
 
 const routes = [
   {
@@ -124,9 +126,29 @@ const routes = [
     component:IzmeniRecenzijuView
   },
   {
-    path:'/dodajKnjigu',
+    path:'/dodajKnjigu/:id',
     name:'DodajKnjiguView',
     component:DodajKnjiguView
+  },
+  {
+    path:'/zanr/:id',
+    name:'ZanrView',
+    component: ZanrView
+  },
+  {
+    path:'/azurirajProfil/:id',
+    name:'IzmenaKorisnikaView',
+    component:IzmenaKorisnikaView
+  },
+  {
+    path:'/azurirajAutora/:id',
+    name:'IzmenaNeaktivnogAutoraView',
+    component:IzmenaNeaktivnogAutoraView
+  },
+  {
+    path:'/izmenaKnjige/:id',
+    name:'IzmenaKnjigeView',
+    component:IzmenaKnjigeView
   }
 ]
 

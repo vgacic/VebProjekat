@@ -1,6 +1,7 @@
 package com.in51_2021.vebProjekat.service;
 
 import com.in51_2021.vebProjekat.dto.RegistracijaDto;
+import com.in51_2021.vebProjekat.entity.Autor;
 import com.in51_2021.vebProjekat.entity.Korisnik;
 import com.in51_2021.vebProjekat.entity.Polica;
 import com.in51_2021.vebProjekat.entity.UlogaKorisnika;
@@ -77,6 +78,24 @@ public class KorisnikService {
             System.out.println("Police su uspesno dodate registrovanom korisniku.");
         }
         korisnik.setPolice(police);
+
+        this.save(korisnik);
+    }
+
+    public void registrujAutora(RegistracijaDto registracijaDto) {
+        Autor korisnik = new Autor(
+                registracijaDto.getIme(),
+                registracijaDto.getPrezime(),
+                registracijaDto.getKorisnickoIme(),
+                registracijaDto.getEmail(),
+                registracijaDto.getLozinka(),
+                Date.from(Instant.now()),
+                "slika123",
+                "opis123",
+                UlogaKorisnika.AUTOR,
+                false
+
+        );
 
         this.save(korisnik);
     }

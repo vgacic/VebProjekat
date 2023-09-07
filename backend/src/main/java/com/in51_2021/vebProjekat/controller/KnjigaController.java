@@ -6,6 +6,7 @@ import com.in51_2021.vebProjekat.entity.Knjiga;
 import com.in51_2021.vebProjekat.entity.Korisnik;
 import com.in51_2021.vebProjekat.entity.Autor;
 import com.in51_2021.vebProjekat.entity.UlogaKorisnika;
+import com.in51_2021.vebProjekat.service.AutorService;
 import com.in51_2021.vebProjekat.service.KnjigaService;
 import com.in51_2021.vebProjekat.service.KorisnikService;
 
@@ -26,6 +27,8 @@ public class KnjigaController {
     private KnjigaService knjigaService;
     @Autowired
     private KorisnikService korisnikService;
+    @Autowired
+    private AutorService autorService;
 
     @GetMapping("/knjige")
     public ResponseEntity<List<KnjigaDto>> getKnjige(HttpSession session)
@@ -66,9 +69,16 @@ public class KnjigaController {
     }
 
 
-    @PostMapping("/dodajKnjigu")
-    public String dodajKnjigu(@RequestBody Knjiga knjiga)
+    @PostMapping("/dodajKnjigu/{id}")
+    public String dodajKnjigu(@RequestBody KnjigaDto knjigaDto, @PathVariable Long id)
     {
+        Knjiga knjiga = new Knjiga();
+        Autor autor = autorService.findById(id);
+        knjiga.setAutor(autor);
+        knjiga.setNaslov(knjigaDto.getNaslov());
+        knjiga.setISBN(knjigaDto.getISBN());
+        knjiga.setBrojStrana(knjigaDto.getBrojStrana());
+        knjiga.setOpis(knjigaDto.getOpis());
         this.knjigaService.save(knjiga);
         return "Uspesno dodata knjiga";
     }

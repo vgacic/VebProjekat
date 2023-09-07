@@ -1,7 +1,8 @@
 <template>
   <div class="home">
    <!---- <img alt="Vue logo" src="../assets/logo.png">-->
-    <HelloWorld msg="Dobrodosli"/>
+   
+    <HelloWorld msg="adsa"/>
   </div>
 </template>
 

@@ -21,7 +21,7 @@ public class ZahtevAktivacijaAutorController {
     @Autowired
     private  ZahtevAktivacijaAutorService zahtevAktivacijaAutorService;
 
-    @GetMapping("/zahtevi") //nema fronta
+    @GetMapping("/zahtevi")
     public ResponseEntity<List<ZahtevAktivacijaAutorDto>> getZahtevi(HttpSession session)
     {
         Korisnik korisnik=(Korisnik) session.getAttribute("korisnik");
@@ -52,7 +52,25 @@ public class ZahtevAktivacijaAutorController {
             return new ResponseEntity("Zahtev za aktivaciju moze podneti samo neulogovan korisnik", HttpStatus.FORBIDDEN);
         }
         zahtevAktivacijaAutorService.saveZahtev(zahtevAktivacijaAutor);
-        ZahtevAktivacijaAutorDto zahtevDto = new ZahtevAktivacijaAutorDto(zahtevAktivacijaAutor);
-        return new ResponseEntity(zahtevDto,HttpStatus.OK);
+        return new ResponseEntity("Uspesno sacuvano",HttpStatus.OK);
+    }
+
+    @GetMapping("/obradi/{id}")
+    public ResponseEntity<String> obradi(@PathVariable Long id, @RequestParam Boolean obradi, HttpSession session) {
+        Korisnik korisnik = (Korisnik) session.getAttribute("korisnik");
+
+        if (korisnik == null) {
+            return new ResponseEntity<>("Niste prijavljeni", HttpStatus.FORBIDDEN);
+        }
+
+        if (!korisnik.getUloga().equals(UlogaKorisnika.ADMINISTRATOR)) {
+            return new ResponseEntity<>("Niste administrator", HttpStatus.FORBIDDEN);
+        }
+
+        ZahtevAktivacijaAutor zahtevAktivacijaAutor = zahtevAktivacijaAutorService.findById(id);
+
+        zahtevAktivacijaAutorService.obradi(obradi, zahtevAktivacijaAutor);
+
+        return new ResponseEntity<>("Uspesno obradjen", HttpStatus.OK);
     }
 }

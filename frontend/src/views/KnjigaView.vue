@@ -1,9 +1,10 @@
 <template>
-    <KnjigaComp  v-if="knjiga" :data="knjiga"/>
+    <KnjigaComp  v-if="this.knjiga" :data="this.knjiga"/>
 
     <form>
         <input type="text" id="nazivPolice" v-model="query">
         <button v-on:click="submit()">Dodaj na policu</button>
+        <router-link :to="'/izmenaKnjige/'+this.knjiga.id" v-if="admin ||jeLiMoja">Izmeni knjigu</router-link>
     </form>
 </template>
 
@@ -18,7 +19,9 @@ export default {
     },
     data() {
         return {
-            knjiga: null
+            knjiga: null,
+            admin: false,
+            jeLiMoja:false
         }
     },
     created() {
@@ -31,6 +34,10 @@ export default {
         .catch(error => {
             console.error(error);
         })
+
+        axios.get('http://localhost:8880/api/admin', {withCredentials:true}).then(response => { this.admin = response.data}).catch(error=>{console.error(error)})
+
+        axios.get('http://localhost:8880/api/autor', {withCredentials:true}).then(response => { this.jeLiMoja = response.data}).catch(error=>{console.error(error)})
     },
     submit()
     {

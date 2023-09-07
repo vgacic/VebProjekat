@@ -1,6 +1,6 @@
 <template>
     <div>
-      <h2 style="text-align: center;">Registracija korisnika</h2>
+      <h2 style="text-align: center;">Azuriraj autora</h2>
       <form @submit.prevent="register">
         <div>
           <label for="ime">Ime: </label>
@@ -28,18 +28,16 @@
         </div>
         <br><br>
         <div>
-          <button v-on:click="submit()" class="submit-button">Registruj se</button>
-          <button v-if="admin" v-on:click="registrujAutora()">Registruj autora</button>
+          <button v-on:click="submit()" class="submit-button">Azuriraj</button>
         </div>
       </form>
       <p v-if="message">{{ message }}</p>
-      <p>Već imate nalog? <router-link to="/">Prijavite se</router-link></p>
     </div>
   </template>
   <script>
 import axios from 'axios'
   export default{
-    name:'RegistracijaView',
+    name:'IzmenaKorisnikaView',
     data() {
     return {
       registracijaDto:{
@@ -53,27 +51,34 @@ import axios from 'axios'
       admin:false
     };
   },
-  created(){
-    axios.get(`http://localhost:8880/api/admin`,{withCredentials:true}).then(response=>{
-      this.admin=response.data;
+  async created(){
+    await axios
+    .get('http://localhost:8880/api/admin', {withCredentials:true})
+    .then(response => {
+        this.admin = response.data
     })
-    .catch(error => { console.error(error)})
+        
+    if (this.admin) {
+        axios
+        .get(`http://localhost:8880/api/korisnik/` + this.$route.params.id, { withCredentials: true })
+        .then(response => {
+        this.registracijaDto = response.data;
+        })
+        .catch(error => {
+        console.error('Error fetching user', error);
+        });
+    }
   },
   methods: {
       submit(){
         axios
-        .post("http://localhost:8880/api/registracija",this.registracijaDto)
-        .catch(error=>{console.log(error)})
-        this.$router.push('/pocetna')
-      },
-      registrujAutora(){
-        axios.post(`http://localhost:8880/api/registrujAutora`,this.registracijaDto, {withCredentials:true})
-        .catch(error => {
-          console.error(error)
+        .put("http://localhost:8880/api/azurirajAutora",this.registracijaDto, {withCredentials:true})
+        .then(response => {
+            console.log(response)
+            this.$router.push('/pocetna')
         })
-        this.$router.push('/pocetna')
+        .catch(error=>{console.log(error)})
       }
-
   }
 };
 
